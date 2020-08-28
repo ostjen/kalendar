@@ -2,7 +2,7 @@ from datetime import datetime
 
 from googleapiclient.discovery import build
 
-from src.utils import load_credentials, display_events, CREATE_EVENT_FIELDS
+from src.utils import load_credentials, CREATE_EVENT_FIELDS
 
 
 class Calendar:
@@ -16,7 +16,6 @@ class Calendar:
                                                    maxResults=n_events, singleEvents=True,
                                                    orderBy='startTime').execute()
         events = events_result.get('items', [])
-        display_events(events)
         return events
 
     def create_event(self, **kwargs):
