@@ -16,7 +16,5 @@ class CalendarManager:
 
         elif action == 'find':
             search_event = self.argument[2]
-            events = calendar.list_next_events()
-            for event in events:
-                if event['summary'] == search_event:
-                    display_events([event])
+            events = calendar.find_event(search_event)
+            display_events(events)

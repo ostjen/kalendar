@@ -2,7 +2,7 @@ from datetime import datetime
 
 from googleapiclient.discovery import build
 
-from src.utils import load_credentials, CREATE_EVENT_FIELDS
+from src.utils import load_credentials, CREATE_EVENT_FIELDS, display_events
 
 
 class Calendar:
@@ -23,6 +23,15 @@ class Calendar:
         event_body = {key: value for key, value in kwargs.items() if key in CREATE_EVENT_FIELDS}
         print(event_body)
         event = self.service.events().insert(calendarId='primary', body=event_body).execute()
+
+    def find_event(self, search_event):
+        events = self.list_next_events()
+        filtered_events = []
+        for event in events:
+            if event['summary'] == search_event:
+                filtered_events.append(event)
+
+        return filtered_events
 
 
 # TODO timezone awareness
