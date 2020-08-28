@@ -2,7 +2,7 @@ from datetime import datetime
 
 from googleapiclient.discovery import build
 
-from utils import load_credentials, CREATE_EVENT_FIELDS, display_events
+from src.utils import load_credentials, display_events, CREATE_EVENT_FIELDS
 
 
 class Calendar:

@@ -1,4 +1,4 @@
-from calendar_actions import Calendar
+from src.calendar_actions import Calendar
 
 
 class CalendarManager:
