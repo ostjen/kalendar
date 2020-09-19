@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from googleapiclient.discovery import build
+from googleapiclient.discovery import build 
 
 from src.utils import load_credentials, CREATE_EVENT_FIELDS, display_events, DEFAULT_CALENDAR, DEFAULT_TIMEZONE 
 
@@ -31,12 +31,17 @@ class Calendar:
 
     # 10/10/2020t20:50
     def create_event(self,args):
-        # parse datetimes
         data = {
             "description" : args.d,
             "summary": args.b,
-            "start" : args.s,
-            "end" : args.e,
-            "calendar" : args.c,
+            "start" : {
+                'dateTime': args.s.isoformat(),
+                'timeZone': DEFAULT_TIMEZONE
+            },
+             "end" : {
+                'dateTime': args.s.isoformat(),
+                'timeZone': DEFAULT_TIMEZONE
+            }
         }
-        print(data)
+        event = self.service.events().insert(calendarId= args.c, body=data).execute()
+        print('created event {{}}'.format(event))
