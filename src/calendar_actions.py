@@ -2,7 +2,7 @@ from datetime import datetime
 
 from googleapiclient.discovery import build
 
-from src.utils import load_credentials, CREATE_EVENT_FIELDS, display_events
+from src.utils import load_credentials, CREATE_EVENT_FIELDS, display_events, DEFAULT_CALENDAR, DEFAULT_TIMEZONE 
 
 
 class Calendar:
@@ -18,11 +18,6 @@ class Calendar:
         events = events_result.get('items', [])
         return events
 
-    def create_event(self, **kwargs):
-        # sanitize body
-        event_body = {key: value for key, value in kwargs.items() if key in CREATE_EVENT_FIELDS}
-        print(event_body)
-        event = self.service.events().insert(calendarId='primary', body=event_body).execute()
 
     def find_event(self, search_event):
         events = self.list_next_events()
@@ -34,17 +29,21 @@ class Calendar:
         return filtered_events
 
 
+def create_event(**kwargs):
+    pass
+
 # TODO timezone awareness
 if __name__ == '__main__':
-    cal = Calendar()
+#     cal = Calendar()
     now = datetime.now().isoformat('T')
-    cal.create_event(summary='summary',
-                     description='description',
-                     start={
-                         'dateTime': now,
-                         'timeZone': 'America/Sao_Paulo',
-                     },
-                     end={
-                         'dateTime': now,
-                         'timeZone': 'America/Sao_Paulo',
-                     })
+#     cal.create_event(summary='summary',
+#                      description='description',
+#                      start={
+#                          'dateTime': now,
+#                          'timeZone': 'America/Sao_Paulo',
+#                      },
+#                      end={
+#                          'dateTime': now,
+#                          'timeZone': 'America/Sao_Paulo',
+#                      })
+    create_event() 
