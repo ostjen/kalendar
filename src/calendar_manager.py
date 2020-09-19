@@ -17,14 +17,16 @@ class CalendarManager:
             display_events(events)
 
         elif action == 'find':
-            search_event = self.argument[2]
-            events = calendar.find_event(search_event)
+            find_parser = ArgumentParser(description = 'find event')
+            find_parser.add_argument('-n',help = 'event name',required=True)
+            args = find_parser.parse_known_args()[0]
+            events = calendar.find_event(args.n)
             display_events(events)
         
         elif action == 'create':
             create_parser = ArgumentParser(description = 'create event')
+            create_parser.add_argument('-n',help = 'event name / summary')
             create_parser.add_argument('-d',help = 'description')
-            create_parser.add_argument('-b',help = 'brief/summary')
             create_parser.add_argument('-s',help = 'start time',type=valid_date,required=True)
             create_parser.add_argument('-e',help = 'end time',type=valid_date,required=True)
             create_parser.add_argument('-c',default=DEFAULT_CALENDAR,help = 'calendar(default = primary')
