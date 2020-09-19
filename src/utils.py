@@ -2,10 +2,9 @@ import os
 import pickle
 from pprint import pprint
 
+from config.settings import DISPLAY_FIELDS
+
 CREATE_EVENT_FIELDS = ['summary', 'location', 'description', 'start', 'end', 'reccurence', 'attendees', 'reminders']
-DISPLAY_FIELDS = ['summary','description','start','end']
-DEFAULT_CALENDAR = 'primary'
-DEFAULT_TIMEZONE = 'America/Sao_Paulo' 
 
 def load_credentials():
     if os.path.exists('token.pickle'):

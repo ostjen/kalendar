@@ -1,7 +1,13 @@
+from config.settings import DEFAULT_CALENDAR
+
 from src.validators import valid_date
+
 from src.calendar_actions import Calendar
-from src.utils import display_events,DEFAULT_CALENDAR
+
+from src.utils import display_events
+
 from argparse import ArgumentParser
+
 
 class CalendarManager:
     def __init__(self, argument):

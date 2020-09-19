@@ -1,8 +1,10 @@
 from datetime import datetime
 
-from googleapiclient.discovery import build 
+from googleapiclient.discovery import build
 
-from src.utils import load_credentials, CREATE_EVENT_FIELDS, display_events, DEFAULT_CALENDAR, DEFAULT_TIMEZONE 
+from config.settings import DEFAULT_TIMEZONE
+from src.utils import load_credentials, CREATE_EVENT_FIELDS, display_events 
+
 
 
 class Calendar:
