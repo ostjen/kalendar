@@ -29,21 +29,14 @@ class Calendar:
         return filtered_events
 
 
-def create_event(**kwargs):
-    pass
-
-# TODO timezone awareness
-if __name__ == '__main__':
-#     cal = Calendar()
-    now = datetime.now().isoformat('T')
-#     cal.create_event(summary='summary',
-#                      description='description',
-#                      start={
-#                          'dateTime': now,
-#                          'timeZone': 'America/Sao_Paulo',
-#                      },
-#                      end={
-#                          'dateTime': now,
-#                          'timeZone': 'America/Sao_Paulo',
-#                      })
-    create_event() 
+    # 10/10/2020t20:50
+    def create_event(self,args):
+        # parse datetimes
+        data = {
+            "description" : args.d,
+            "summary": args.b,
+            "start" : args.s,
+            "end" : args.e,
+            "calendar" : args.c,
+        }
+        print(data)
