@@ -3,18 +3,18 @@ A simple command line google calendar tool
 
 ### Requirements 
 
-create a virtualenv
+1. create a virtualenv
 
 ```
 virtualenv .venv --python=`which python3`
 ```
 
-activate it
+2. activate it
 ```
 source .venv/bin/activate
 ```
 
-install requirements
+3. install requirements
 ```
 pip install -r requirements/base.txt
 ```
