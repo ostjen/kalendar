@@ -19,7 +19,10 @@ class CalendarManager:
         action = self.argument[1]
         
         if action == 'list':
-            events = calendar.list_next_events()
+            list_parser = ArgumentParser(description = 'list events')
+            list_parser.add_argument('-c',help = 'calendar name(default calendar located in config/settings.py)',default = DEFAULT_CALENDAR)
+            args = list_parser.parse_known_args()[0]
+            events = calendar.list_next_events(calendar_id = args.c)
             display_events(events)
 
         elif action == 'find':
@@ -35,6 +38,6 @@ class CalendarManager:
             create_parser.add_argument('-d',help = 'description')
             create_parser.add_argument('-s',help = 'start time',type=valid_date,required=True)
             create_parser.add_argument('-e',help = 'end time',type=valid_date,required=True)
-            create_parser.add_argument('-c',default=DEFAULT_CALENDAR,help = 'calendar(default = primary')
+            create_parser.add_argument('-c',default=DEFAULT_CALENDAR,help = 'calendar(default calendar located in config/settings.py)')
             args = create_parser.parse_known_args()[0]
             calendar.create_event(args)
