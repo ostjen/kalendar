@@ -41,7 +41,7 @@ class Calendar:
                 'timeZone': DEFAULT_TIMEZONE
             },
              "end" : {
-                'dateTime': args.s.isoformat(),
+                'dateTime': args.e.isoformat(),
                 'timeZone': DEFAULT_TIMEZONE
             }
         }
