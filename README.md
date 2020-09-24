@@ -12,11 +12,15 @@ virtualenv .venv --python=`which python3`
 source .venv/bin/activate
 ```
 
-3. install requirements
+2. install requirements
 ```
 pip install -r requirements/base.txt
 ```
 
+* To use kalendar as a shell command, add this line to .bashrc or .profile
+```
+export PATH=$PATH":$HOME/path/to/kalendar"
+```
 ### Setup
 
 * enable your google calendar api [here](https://developers.google.com/calendar/quickstart/python) and paste the credentials.json in the repo root folder
