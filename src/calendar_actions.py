@@ -31,7 +31,6 @@ class Calendar:
         return filtered_events
 
 
-    # 10/10/2020t20:50
     def create_event(self,args):
         data = {
             "summary": args.n,
